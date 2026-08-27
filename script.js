@@ -104,6 +104,7 @@ window.addEventListener('load', function() {
     }
 });
 
+
 // ============ Scroll Animations ============
 const observerOptions = {
     threshold: 0.1,

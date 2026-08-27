@@ -45,6 +45,8 @@ body {
     z-index: 1000;
 }
 
+/* disclaimer removed — styles cleaned up */
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -123,6 +125,34 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* Global site watermark (fixed, behind content) */
+.site-watermark {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url('logo.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: clamp(180px, 45vw, 900px);
+    opacity: 0.08; /* subtle, slightly higher visibility on white */
+    filter: none; /* avoid heavy filters to improve rendering performance */
+}
+
+/* Ensure main content stacks above watermark */
+.container { position: relative; z-index: 1; }
+
+@media (max-width: 1024px) {
+    .site-watermark { background-size: clamp(140px, 55vw, 420px); opacity: 0.06; }
+}
+
+@media (max-width: 600px) {
+    .site-watermark { background-size: clamp(100px, 60vw, 220px); opacity: 0.05; }
+}
+
+/* Ensure hero content sits above watermark */
+.hero-content { z-index: 2; position: relative; }
 
 .hero-content {
     display: flex;
@@ -475,7 +505,63 @@ body {
     text-align: center;
     font-size: 18px;
     color: var(--text-light);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+}
+
+/* ============ Contact Numbers ============ */
+.contact-numbers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-number-card {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--light-navy) 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: var(--transition);
+}
+
+.contact-number-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.phone-flag {
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    height: 60px;
+}
+
+.phone-details {
+    flex: 1;
+}
+
+.phone-number {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-gold);
+    margin: 0 0 5px 0;
+    letter-spacing: 0.5px;
+}
+
+.phone-info {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-weight: 500;
 }
 
 .contact-form {
@@ -485,6 +571,51 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-embed {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+.form-embed { overflow: hidden; }
+.form-embed-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 6px 14px 6px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.form-embed-logo {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.form-embed-title h3 { margin: 0; font-size: 18px; color: var(--primary-navy); }
+.form-embed-title .muted { margin: 0; font-size: 13px; color: var(--text-light); }
+.cta-button.small { padding: 8px 14px; font-size: 14px; margin-left: auto; }
+
+.form-embed-body iframe {
+    width: 100%;
+    height: 760px;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .form-embed-body iframe { height: 900px; }
+    .form-embed-logo { width: 40px; height: 40px; }
+}
+
+@media (max-width: 600px) {
+    .form-embed-body iframe { height: 760px; }
+    .form-embed { padding: 14px; border-radius: 8px; }
+    .form-embed-header { gap: 10px; }
 }
 
 .form-group {
@@ -532,17 +663,19 @@ body {
     background-color: var(--primary-navy);
     color: white;
     text-align: center;
-    padding: 30px 20px;
+    padding: 10px 20px;
 }
 
 .footer p {
-    margin: 5px 0;
+    margin: 2px 0;
     font-size: 14px;
 }
 
 .footer p:first-child {
     font-weight: 600;
 }
+
+
 
 /* ============ Responsive Design ============ */
 @media (max-width: 768px) {
@@ -583,6 +716,10 @@ body {
 
     .expertise-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .contact-numbers {
+        grid-template-columns: 1fr;
     }
 
     .timeline::before {
