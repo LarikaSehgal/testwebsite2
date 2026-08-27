@@ -549,12 +549,25 @@ body {
     flex: 1;
 }
 
+a[href^="tel"] {
+    color: var(--primary-gold);
+    -webkit-text-fill-color: var(--primary-gold);
+    text-decoration: none;
+}
+
 .phone-number {
     font-size: 18px;
     font-weight: 700;
     color: var(--primary-gold);
     margin: 0 0 5px 0;
     letter-spacing: 0.5px;
+    -webkit-text-fill-color: var(--primary-gold);
+    text-decoration: none;
+}
+
+a .phone-number {
+    color: var(--primary-gold);
+    -webkit-text-fill-color: var(--primary-gold);
 }
 
 .phone-info {
