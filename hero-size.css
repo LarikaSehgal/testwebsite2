@@ -1,0 +1,9 @@
+@media (min-width: 801px) {
+  .hero {
+    grid-template-columns: 470px minmax(0, 1fr);
+  }
+
+  .hero-portrait {
+    height: 540px;
+  }
+}

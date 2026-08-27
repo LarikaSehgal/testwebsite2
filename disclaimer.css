@@ -1,0 +1,42 @@
+/* Keep the scope note present without making it feel like a warning. */
+.hero-card {
+  background: #f1ede4;
+  color: var(--ink);
+  padding: 31px 32px 28px;
+  box-shadow: none;
+  border-left: 3px solid var(--gold);
+}
+
+.card-seal {
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.card-label {
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.hero-card h2 {
+  font-size: 27px;
+  margin-bottom: 16px;
+}
+
+.hero-card h2 span {
+  color: var(--gold);
+}
+
+.hero-card > p:not(.card-label):not(.card-foot) {
+  color: var(--ink-soft);
+}
+
+.card-rule {
+  background: #d4cbbb;
+  margin: 22px 0 14px;
+}
+
+.card-foot {
+  color: var(--ink-soft) !important;
+}
